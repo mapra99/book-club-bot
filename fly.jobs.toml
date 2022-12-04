@@ -1,0 +1,19 @@
+# fly.toml file generated for book-club-bot-jobs on 2022-12-04T17:42:59-05:00
+
+app = "book-club-bot-jobs"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[build]
+  dockerfile = "./Dockerfile.jobs"
+
+[env]
+  RACK_ENV="production"
+  RAILS_ENV="production"
+  RAILS_LOG_TO_STDOUT="ENABLE"
+  RAILS_SERVE_STATIC_FILES="enabled"
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
