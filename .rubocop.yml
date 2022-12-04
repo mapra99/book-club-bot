@@ -1,0 +1,41 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - staging
+    - test
+    - development
