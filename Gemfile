@@ -47,5 +47,5 @@ end
 
 gem 'tzinfo-data'
 
-gem 'sidekiq', '~> 7.0'
+gem 'sidekiq', '~> 6.5'
 gem 'rest-client'
