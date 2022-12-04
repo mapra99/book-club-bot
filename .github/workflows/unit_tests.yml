@@ -55,4 +55,4 @@ jobs:
           REDIS_URL: redis://localhost:6379
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          COVERAGE: true
+          COVERAGE: false
