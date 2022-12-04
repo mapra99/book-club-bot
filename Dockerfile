@@ -22,3 +22,6 @@ RUN bundle install --no-cache
 
 # Copy the whole app
 COPY . /app
+
+EXPOSE 3000
+CMD ["puma", "-C", "config/puma.rb"]
