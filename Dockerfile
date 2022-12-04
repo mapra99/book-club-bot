@@ -14,6 +14,7 @@ COPY Gemfile.lock /app/Gemfile.lock
 
 # Install bundler
 RUN gem install bundler:2.3.10
+RUN gem install foreman
 
 # Run bundle install to install gems inside the gemfile
 RUN bundle config set --local without 'development test'
@@ -24,4 +25,4 @@ RUN bundle install --no-cache
 COPY . /app
 
 EXPOSE 3000
-CMD ["puma", "-C", "config/puma.rb"]
+CMD ["foreman", "start"]
