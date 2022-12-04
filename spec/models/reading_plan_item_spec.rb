@@ -5,5 +5,6 @@ RSpec.describe ReadingPlanItem, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:reading_plan) }
+    it { is_expected.to have_many(:reading_plan_item_reminders) }
   end
 end

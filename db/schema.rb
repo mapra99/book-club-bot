@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_04_081834) do
+ActiveRecord::Schema.define(version: 2022_12_04_151655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2022_12_04_081834) do
     t.string "site_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reading_plan_item_reminders", force: :cascade do |t|
+    t.bigint "reading_plan_item_id", null: false
+    t.string "message", null: false
+    t.datetime "sent_date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reading_plan_item_id"], name: "index_reading_plan_item_reminders_on_reading_plan_item_id"
   end
 
   create_table "reading_plan_items", force: :cascade do |t|
@@ -41,6 +50,7 @@ ActiveRecord::Schema.define(version: 2022_12_04_081834) do
     t.index ["book_id"], name: "index_reading_plans_on_book_id"
   end
 
+  add_foreign_key "reading_plan_item_reminders", "reading_plan_items"
   add_foreign_key "reading_plan_items", "reading_plans"
   add_foreign_key "reading_plans", "books"
 end
