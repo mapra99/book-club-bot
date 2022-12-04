@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2022_12_04_081834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "books", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "author", null: false
+    t.string "site_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reading_plan_items", force: :cascade do |t|
+    t.bigint "reading_plan_id", null: false
+    t.string "description", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
+    t.string "reminder_frequency", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reading_plan_id"], name: "index_reading_plan_items_on_reading_plan_id"
+  end
+
+  create_table "reading_plans", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_reading_plans_on_book_id"
+  end
+
+  add_foreign_key "reading_plan_items", "reading_plans"
+  add_foreign_key "reading_plans", "books"
 end
